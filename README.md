@@ -122,3 +122,5 @@ The app uses three main calorie-tracking models:
 - `Goal`: stores each user's daily calorie goal
 
 Each meal belongs to a logged-in Django user.
+<img width="897" height="645" alt="image" src="https://github.com/user-attachments/assets/2d0fcb07-3c4f-48a8-bd50-0d2afec349b0" />
+
