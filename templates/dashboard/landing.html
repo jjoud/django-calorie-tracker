@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}CalorieTrack | Simple Calorie Tracking{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <p class="eyebrow">Calorie-only tracking</p>
+        <h1>CalorieTrack</h1>
+        <p class="hero-copy">
+            Track meals, follow your daily goal, and see your calorie history without macro clutter.
+        </p>
+        <div class="hero-actions">
+            <a class="button" href="{% url 'accounts:register' %}">Create Account</a>
+            <a class="button button-secondary" href="{% url 'accounts:login' %}">Login</a>
+        </div>
+    </div>
+    <div class="hero-panel">
+        <div class="metric-card primary">
+            <span>Today</span>
+            <strong>1,340</strong>
+            <small>calories consumed</small>
+        </div>
+        <div class="mini-grid">
+            <div class="metric-card">
+                <span>Goal</span>
+                <strong>2,000</strong>
+            </div>
+            <div class="metric-card">
+                <span>Left</span>
+                <strong>660</strong>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

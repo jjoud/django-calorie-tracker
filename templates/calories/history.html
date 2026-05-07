@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}History | CalorieTrack{% endblock %}
+
+{% block content %}
+<section class="section-heading">
+    <p class="eyebrow">History</p>
+    <h1>Calorie History</h1>
+</section>
+
+<section class="content-grid">
+    <article class="panel">
+        <h2>Totals by Date</h2>
+        <div class="list">
+            {% for item in history_totals %}
+                <div class="list-row">
+                    <strong>{{ item.date }}</strong>
+                    <b>{{ item.total }} cal</b>
+                </div>
+            {% empty %}
+                <p class="empty-state">No history yet.</p>
+            {% endfor %}
+        </div>
+    </article>
+
+    <article class="panel">
+        <h2>Meal Log</h2>
+        <div class="list">
+            {% for meal in meals %}
+                <div class="list-row">
+                    <div>
+                        <strong>{{ meal.food.name }}</strong>
+                        <span>{{ meal.eaten_at|date:"M d, Y g:i A" }}</span>
+                    </div>
+                    <b>{{ meal.total_calories }} cal</b>
+                </div>
+            {% empty %}
+                <p class="empty-state">No meals logged yet.</p>
+            {% endfor %}
+        </div>
+    </article>
+</section>
+{% endblock %}

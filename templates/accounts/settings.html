@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Goal Settings | CalorieTrack{% endblock %}
+
+{% block content %}
+<section class="section-heading">
+    <p class="eyebrow">Settings</p>
+    <h1>Daily Goal</h1>
+</section>
+
+<section class="panel narrow">
+    <form method="post" class="form-card">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="button" type="submit">Save Goal</button>
+    </form>
+</section>
+{% endblock %}

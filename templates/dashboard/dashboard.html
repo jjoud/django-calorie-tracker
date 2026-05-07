@@ -1,0 +1,61 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Dashboard | CalorieTrack{% endblock %}
+
+{% block content %}
+<section class="section-heading">
+    <p class="eyebrow">Today</p>
+    <h1>Your Dashboard</h1>
+    <a class="button" href="{% url 'calories:add_meal' %}">Add Meal</a>
+</section>
+
+<section class="stats-grid">
+    <article class="stat-card">
+        <span>Consumed</span>
+        <strong>{{ total_calories }}</strong>
+        <small>calories today</small>
+    </article>
+    <article class="stat-card">
+        <span>Remaining</span>
+        <strong>{{ remaining_calories }}</strong>
+        <small>calories left</small>
+    </article>
+    <article class="stat-card">
+        <span>Daily Goal</span>
+        <strong>{{ goal.daily_calorie_goal }}</strong>
+        <small>calories</small>
+    </article>
+</section>
+
+<section class="content-grid">
+    <article class="panel">
+        <div class="panel-header">
+            <h2>Progress</h2>
+            <span>{{ progress_percentage }}%</span>
+        </div>
+        <div class="progress-bar">
+            <div style="width: {{ progress_percentage }}%"></div>
+        </div>
+    </article>
+
+    <article class="panel">
+        <div class="panel-header">
+            <h2>Meals Today</h2>
+            <a href="{% url 'calories:history' %}">View History</a>
+        </div>
+        <div class="list">
+            {% for meal in today_meals %}
+                <div class="list-row">
+                    <div>
+                        <strong>{{ meal.food.name }}</strong>
+                        <span>{{ meal.servings }} serving(s)</span>
+                    </div>
+                    <b>{{ meal.total_calories }} cal</b>
+                </div>
+            {% empty %}
+                <p class="empty-state">No meals added today.</p>
+            {% endfor %}
+        </div>
+    </article>
+</section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Food Database | CalorieTrack{% endblock %}
+
+{% block content %}
+<section class="section-heading">
+    <p class="eyebrow">Foods</p>
+    <h1>Food Database</h1>
+</section>
+
+<section class="content-grid">
+    <article class="panel">
+        <h2>Add Food</h2>
+        <form method="post" class="form-card">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="button" type="submit">Save Food</button>
+        </form>
+    </article>
+
+    <article class="panel">
+        <h2>Saved Foods</h2>
+        <div class="list">
+            {% for food in foods %}
+                <div class="list-row">
+                    <div>
+                        <strong>{{ food.name }}</strong>
+                        <span>{{ food.serving_size }}</span>
+                    </div>
+                    <b>{{ food.calories }} cal</b>
+                </div>
+            {% empty %}
+                <p class="empty-state">No foods saved yet.</p>
+            {% endfor %}
+        </div>
+    </article>
+</section>
+{% endblock %}

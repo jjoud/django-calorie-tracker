@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Register | CalorieTrack{% endblock %}
+
+{% block content %}
+<section class="auth-card">
+    <p class="eyebrow">Start tracking</p>
+    <h1>Create Account</h1>
+    <form method="post" class="form-card">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="button" type="submit">Register</button>
+    </form>
+    <p class="muted">Already have an account? <a href="{% url 'accounts:login' %}">Login</a>.</p>
+</section>
+{% endblock %}
